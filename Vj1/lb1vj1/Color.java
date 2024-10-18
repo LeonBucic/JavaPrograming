@@ -5,7 +5,6 @@ public class Color {
     private int green;
     private int blue;
 
-    // Konstruktor koji prima hex string
     public static Color decode(String hex) {
         int intColor = Integer.decode(hex);
         int red = (intColor >> 16) & 0xFF;
@@ -14,35 +13,29 @@ public class Color {
         return new Color(red, green, blue);
     }
 
-    // Konstruktor za RGB vrijednosti
     public Color(int red, int green, int blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
     }
 
-    // Getter za crvenu komponentu
     public int getRed() {
         return red;
     }
 
-    // Getter za zelenu komponentu
     public int getGreen() {
         return green;
     }
 
-    // Getter za plavu komponentu
     public int getBlue() {
         return blue;
     }
 
-    // Pretvaranje RGB u HSB (Hue, Saturation, Brightness)
     public static float[] RGBtoHSB(int red, int green, int blue, float[] hsb) {
         java.awt.Color.RGBtoHSB(red, green, blue, hsb);
         return hsb;
     }
 
-    // Pretvaranje RGB u HSL
     public float[] RGBtoHSL() {
         float r = red / 255f;
         float g = green / 255f;
@@ -70,7 +63,6 @@ public class Color {
         return new float[]{h * 360, s * 100, l * 100};
     }
 
-    // Pretvaranje RGB u CMYK
     public float[] RGBtoCMYK() {
         float r = red / 255f;
         float g = green / 255f;
@@ -89,7 +81,6 @@ public class Color {
     }
 
 
-    // Pretvaranje RGB u String
     public String toString() {
         return "RGB: (" + red + ", " + green + ", " + blue + ")";
     }
@@ -98,7 +89,6 @@ public class Color {
         return (red << 16) | (green << 8) | blue;
     }
 
-    // Pretvaranje RGB u HEX
     public String toHexString() {
         return String.format("0x%06X", getRGB());
     }
